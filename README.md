@@ -6,9 +6,12 @@ Vous êtes un AI Engineer junior freelance. Une start-up française spécialisé
 
 La start-up vous demande de développer trois fonctionnalités principales :
 
-###Song-to-Song : Recommander des chansons similaires à partir d’une chanson sélectionnée par l’utilisateur
-###Mood-to-Playlist : Générer une playlist adaptée à l’humeur exprimée par l’utilisateur (joyeux, mélancolique, énergique, etc.)
-###Activity-to-Playlist : Proposer une playlist adaptée à une activité spécifique (sport, méditation, travail, conduite, etc.)
+### Song-to-Song : 
+      Recommander des chansons similaires à partir d’une chanson sélectionnée par l’utilisateur
+### Mood-to-Playlist : 
+Générer une playlist adaptée à l’humeur exprimée par l’utilisateur (joyeux, mélancolique, énergique, etc.)
+### Activity-to-Playlist : 
+Proposer une playlist adaptée à une activité spécifique (sport, méditation, travail, conduite, etc.)
 Pour mener à bien ce projet, la start-up vous fournit un accès au dataset public de Spotify, mais celui-ci présente un défi majeur : il ne contient pas de données explicites sur l’humeur ou les activités associées aux chansons. Vous devrez donc enrichir ces données pour répondre aux objectifs du projet.
 
 Commencez par une étude de marché sur les habitudes d’écoute musicale des français et sur les applications de recommandation musicale existantes. Cette analyse vous permettra de mieux comprendre les attentes des utilisateurs et de positionner votre solution de manière pertinente.
