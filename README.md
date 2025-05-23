@@ -19,3 +19,10 @@ Commencez par une étude de marché sur les habitudes d’écoute musicale des f
 Après cette étude, réalisez une analyse approfondie de la base de données Spotify pour identifier les corrélations entre les caractéristiques audio et les perceptions humaines. Cette exploration devrait inclure : l’analyse des attributs audio (tempo, énergie, dansabilité, etc.), l’évolution des préférences musicales au fil du temps, la popularité des genres musicaux, et les caractéristiques communes aux titres les plus écoutés.
 
 Sur la base de ces informations, vous devrez développer une stratégie d’enrichissement des données pour attribuer des “tags” d’humeur et d’activité aux chansons de la base de données.
+
+# ressources:
+- Spotify Dataset sur Kaggle: https://www.kaggle.com/datasets/zaheenhamidani/ultimate-spotify-tracks-db?resource=download
+- Documentation de l’API Spotify: https://developer.spotify.com/documentation/web-api
+- ressource complémentaire : http://millionsongdataset.com/
+- pour l’enrichissement des données : https://musicbrainz.org/
+- pour les tags communautaires : https://www.last.fm/api
