@@ -26,3 +26,5 @@ Sur la base de ces informations, vous devrez développer une stratégie d’enri
 - ressource complémentaire : http://millionsongdataset.com/
 - pour l’enrichissement des données : https://musicbrainz.org/
 - pour les tags communautaires : https://www.last.fm/api
+
+(version de pauline "commentaire de Hassan")
