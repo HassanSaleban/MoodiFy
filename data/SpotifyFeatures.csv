@@ -1,0 +1,6 @@
+genre,artist_name,track_name,track_id,popularity,acousticness,danceability,duration_ms,energy,instrumentalness,key,liveness,loudness,mode,speechiness,tempo,time_signature,valence
+Pop,Artist A,Song 1,0BRjO6ga9RKCKjfDqeFgWV,50,0.1,0.6,200000,0.8,0.0,C#,Major,0.1,-5.0,Major,0.05,120,4/4,0.5
+Rock,Artist B,Song 2,0BjC1NfoEOOusryehmNudP,40,0.3,0.5,180000,0.7,0.0,F#,Minor,0.2,-6.0,Minor,0.04,130,4/4,0.6
+Movie,Henri Salvador,C'est beau de faire un Show,0CoSDzoNIKCRs124s9uTVy,60,0.2,0.4,210000,0.6,0.0,C,Minor,0.15,-4.5,Minor,0.06,110,5/4,0.4
+Movie,Martin & les fées,Perdu d'avance (par Gad Elmaleh),0Gc6TVm52BwZD07Ki6tIvf,55,0.25,0.55,190000,0.65,0.0,F,Major,0.12,-5.2,Major,0.07,115,4/4,0.45
+Soul,Artist C,Song 3,0IuslXpMROHdEPvSl1fTQK,70,0.15,0.7,230000,0.9,0.0,G,Major,0.18,-3.0,Major,0.05,140,4/4,0.7
