@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étude de Marché - Les Français et la Musique</title>
+    <style>
+        @page {
+            margin: 2cm;
+            size: A4;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            font-size: 10pt;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28pt;
+            font-weight: 300;
+        }
+        
+        .header .subtitle {
+            font-size: 14pt;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            background: #f8f9fa;
+            padding: 12px 20px;
+            margin: 20px 0 15px 0;
+            border-left: 4px solid #667eea;
+            font-size: 16pt;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .subsection-title {
+            color: #667eea;
+            font-size: 13pt;
+            font-weight: 600;
+            margin: 15px 0 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .age-group {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0 15px 0;
+            font-size: 14pt;
+            font-weight: 600;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .stat-number {
+            font-size: 20pt;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 9pt;
+            color: #666;
+            margin-top: 3px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .platform-analysis {
+            background: #f1f3f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .platform-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .platform-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 12pt;
+            margin-bottom: 8px;
+        }
+        
+        .swot-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 9pt;
+        }
+        
+        .swot-table th, .swot-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        .swot-table th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .strengths { background: #e8f5e8; }
+        .weaknesses { background: #ffeaa7; }
+        .opportunities { background: #a8e6cf; }
+        .threats { background: #ffb3ba; }
+        
+        .methodology {
+            background: #f1f3f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .conclusion-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+        
+        .age-summary {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .innovation-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .innovation-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #fff;
+        }
+        
+        .innovation-title {
+            font-size: 13pt;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .action-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11pt;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+        
+        .action-button:hover {
+            background: #5a67d8;
+        }
+        
+        .download-button {
+            background: #28a745;
+        }
+        
+        .download-button:hover {
+            background: #218838;
+        }
+        
+        @media print {
+            .action-buttons { display: none; }
+            body { font-size: 9pt; }
+            .header h1 { font-size: 24pt; }
+            .section-title { font-size: 14pt; }
+            .subsection-title { font-size: 11pt; }
+            .age-group { font-size: 12pt; }
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            font-size: 9pt;
+            color: #666;
+            text-align: center;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+
+        .sources-section a {
+            color: #667eea;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .sources-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons">
+        <button class="action-button" onclick="window.print()">📄 Imprimer PDF</button>
+        <button class="action-button download-button" onclick="downloadHTML()">💾 Télécharger HTML</button>
+    </div>
+    
+    <div class="header">
+        <h1>🎧 Étude de Marché</h1>
+        <div class="subtitle">Les Français et la Musique - Analyse Détaillée</div>
+        <div style="font-size: 12pt; margin-top: 15px; opacity: 0.8;">
+            Projet Wild Code School • Analyse Data Musicale • Gaëlle, Pauline, Bertrand & Hassan
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">1. Introduction</div>
+        <p>Dans le cadre du projet de data analyse autour de la musique proposé par la Wild Code School, il est essentiel de comprendre les usages, préférences et tendances de consommation musicale en France. Cette étude de marché vise à dresser un état des lieux du comportement des Français face à la musique, à identifier les opportunités du marché, et à dégager des pistes d'exploitation de la donnée musicale dans une logique de projet innovant.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">2. Méthodologie</div>
+        <div class="methodology">
+            <p><strong>Cette étude repose sur l'analyse de rapports récents et fiables :</strong></p>
+            <ul>
+                <li><strong>Rapport Ipsos pour le CNM (octobre 2023)</strong> – "Les Français et la musique"</li>
+                <li><strong>Sondage IFOP (mai 2022)</strong> – "Les Français et la musique"</li>
+                <li><strong>Analyses détaillées par tranches d'âge</strong> – Données comportementales spécifiques</li>
+                <li><strong>Études sur les plateformes de streaming</strong> – Parts de marché et fonctionnalités</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">3. Analyse Détaillée par Classe d'Âge</div>
+        
+        <div class="age-group">🎤 Jeunes de 15 à 24 ans : La génération du streaming nomade et du rap</div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">2h43</span>
+                <div class="stat-label">d'écoute quotidienne moyenne</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">53%</span>
+                <div class="stat-label">écoutent du rap/hip-hop</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">93%</span>
+                <div class="stat-label">utilisent le smartphone</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">73%</span>
+                <div class="stat-label">utilisent le streaming</div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Caractéristiques clés :</strong>
+            <ul>
+                <li>40% dépassent les 3 heures d'écoute par jour</li>
+                <li>71% utilisent des écouteurs plus de 5h/jour</li>
+                <li>64% découvrent via les réseaux sociaux (TikTok, Instagram)</li>
+                <li>Pic d'écoute le soir (21h-0h) pour 67%</li>
+                <li>68% résident en zone urbaine</li>
+            </ul>
+        </div>
+
+        <div class="age-group">👔 Adultes de 25 à 34 ans : L'équilibre entre découverte et routine professionnelle</div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">2h26</span>
+                <div class="stat-label">d'écoute quotidienne</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">87%</span>
+                <div class="stat-label">utilisent le streaming payant</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">43%</span>
+                <div class="stat-label">écoutent du rap/hip-hop</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">41%</span>
+                <div class="stat-label">possèdent des enceintes connectées</div>
+            </div>
+        </div>
+
+        <div class="age-summary">
+            <strong>Point clé :</strong> La "paralysie musicale" débute à 27 ans et 3 mois, réduisant les découvertes à 1 nouveau artiste/mois. 45% ont des enfants, ce qui réduit leur temps de découverte musicale de 4 ans en moyenne.
+        </div>
+
+        <div class="age-group">🏠 Adultes de 35 à 44 ans : La maturité musicale et l'attachement au patrimoine</div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">2h30</span>
+                <div class="stat-label">d'écoute quotidienne</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">67%</span>
+                <div class="stat-label">préfèrent la variété française</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">6</span>
+                <div class="stat-label">supports utilisés/mois</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">58%</span>
+                <div class="stat-label">réécoutent des albums de leur adolescence</div>
+            </div>
+        </div>
+
+        <div class="age-group">📻 Adultes de 45 à 59 ans : La transition vers les supports traditionnels</div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">2h06</span>
+                <div class="stat-label">d'écoute quotidienne</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">72%</span>
+                <div class="stat-label">écoutent la variété française</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">85%</span>
+                <div class="stat-label">d'audience radio mensuelle</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">56%</span>
+                <div class="stat-label">redécouvrent les tubes 80-90</div>
+            </div>
+        </div>
+
+        <div class="age-group">🎼 Seniors de 60 à 69 ans : La fidélité aux médias linéaires</div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">1h46</span>
+                <div class="stat-label">d'écoute quotidienne</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">81%</span>
+                <div class="stat-label">écoutent la variété française</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">92%</span>
+                <div class="stat-label">utilisent la radio FM</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">12%</span>
+                <div class="stat-label">seulement utilisent le streaming</div>
+            </div>
+        </div>
+
+        <div class="age-group">🎵 Seniors de 70 ans et plus : La musique comme patrimoine émotionnel</div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">1h38</span>
+                <div class="stat-label">d'écoute quotidienne</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">89%</span>
+                <div class="stat-label">écoutent la variété française</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">92%</span>
+                <div class="stat-label">considèrent la musique comme patrimoine</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">2</span>
+                <div class="stat-label">supports fixes utilisés</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">4. Analyse des Plateformes de Streaming</div>
+        
+        <div class="subsection-title">Principales plateformes et leurs fonctionnalités</div>
+        
+        <div class="platform-analysis">
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-name">🎧 Spotify</div>
+                    <p><strong>Position :</strong> Leader du marché, notamment chez les jeunes</p>
+                    <p><strong>Fonctionnalités :</strong> "Discover Weekly", "Daily Mix", algorithmes avancés, Spotify Wrapped</p>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">🇫🇷 Deezer</div>
+                    <p><strong>Position :</strong> Acteur français, plus utilisé par les 30-45 ans</p>
+                    <p><strong>Fonctionnalités :</strong> "Flow" - playlist personnalisée basée sur les préférences</p>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">🍎 Apple Music</div>
+                    <p><strong>Position :</strong> Forte intégration écosystème Apple</p>
+                    <p><strong>Fonctionnalités :</strong> Recommandations basées sur les habitudes, playlists éditoriales</p>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-name">📺 YouTube Music</div>
+                    <p><strong>Position :</strong> Croissance rapide via YouTube</p>
+                    <p><strong>Fonctionnalités :</strong> Combine historique YouTube et préférences musicales</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection-title">📊 Tendances du marché :</div>
+        <ul>
+            <li>Le streaming représente plus de 80% des revenus de la musique enregistrée en France</li>
+            <li>Personnalisation croissante via les algorithmes de recommandation</li>
+            <li>Forte concurrence sur les abonnements : options familiales, versions étudiantes</li>
+            <li>Émergence de la musique immersive et des concerts virtuels</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">5. Synthèse Transversale</div>
+        
+        <div class="subsection-title">🔍 Observations clés :</div>
+        <ul>
+            <li>Corrélation inverse entre âge et adoption des nouvelles technologies</li>
+            <li>Durée d'écoute décroissante : de 2h43 (15-24 ans) à 1h38 (70+ ans)</li>
+            <li>Attachement aux genres nationaux croissant avec l'âge (53% à 89% pour la variété française)</li>
+            <li>Supports utilisés : 8/mois chez les jeunes vs 2 supports fixes chez les seniors</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">6. Analyse SWOT</div>
+        
+        <table class="swot-table">
+            <thead>
+                <tr>
+                    <th>Forces</th>
+                    <th>Faiblesses</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="strengths">
+                        • Données riches et récentes sur le marché<br>
+                        • Segmentation claire par tranches d'âge<br>
+                        • Forte adoption du numérique chez les jeunes<br>
+                        • Diversité des goûts musicaux
+                    </td>
+                    <td class="weaknesses">
+                        • Fracture générationnelle marquée<br>
+                        • "Paralysie musicale" dès 27 ans<br>
+                        • Résistance au changement chez les seniors<br>
+                        • Concurrence forte entre plateformes
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="swot-table">
+            <thead>
+                <tr>
+                    <th>Opportunités</th>
+                    <th>Menaces</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="opportunities">
+                        • Personnalisation via l'IA et les algorithmes<br>
+                        • Intégration réseaux sociaux (TikTok, Instagram)<br>
+                        • Nouveaux formats (concerts virtuels, musique immersive)<br>
+                        • Valorisation de la musique locale
+                    </td>
+                    <td class="threats">
+                        • Saturation du marché streaming<br>
+                        • Fragmentation des audiences par âge<br>
+                        • Dévaluation de la musique<br>
+                        • Problèmes de santé auditive chez les jeunes
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">7. OPPORTUNITÉS INNOVATIONS</div>
+        
+        <div class="innovation-box">
+            <p style="margin-bottom: 20px; font-size: 12pt;">Les résultats de cette analyse ouvrent plusieurs perspectives d'applications pratiques :</p>
+            
+            <div class="innovation-item">
+                <div class="innovation-title">1. Song-to-Song</div>
+                <p>Recommander des chansons similaires à partir d'une chanson sélectionnée par l'utilisateur</p>
+            </div>
+            
+            <div class="innovation-item">
+                <div class="innovation-title">2. Mood-to-Playlist</div>
+                <p>Générer une playlist adaptée à l'humeur exprimée par l'utilisateur (joyeux, mélancolique, énergique, etc.)</p>
+            </div>
+            
+            <div class="innovation-item">
+                <div class="innovation-title">3. Activity-to-Playlist</div>
+                <p>Proposer une playlist adaptée à une activité spécifique (sport, méditation, travail, conduite, etc.)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section sources-section">
+        <div class="section-title">8. Sources</div>
+        <ul>
+            <li><a href="https://cnm.fr/wp-content/uploads/2023/11/Ipsos-pour-le-CNM-Les-Francais-et-la-musique-Rapport-detaille-Octobre-2023.pdf" target="_blank">Ipsos pour le CNM – Les Français et la musique – Rapport détaillé – Octobre 2023</a></li>
+            <li><a href="https://www.ifop.com/wp-content/uploads/2018/03/3646-1-study_file.pdf" target="_blank">IFOP – Les Français et la musique – Étude comportementale</a></li>
+            <li><a href="https://www.arcom.fr/se-documenter/etudes-et-donnees/etudes-bilans-et-rapports-de-larcom/tendances-audio-video-2025" target="_blank">ARCOM – Tendances Audio-Vidéo 2025</a></li>
+            <li><a href="https://www.ifpi.org/wp-content/uploads/2023/12/IFPI-Engaging-With-Music-2023_full-report.pdf" target="_blank">IFPI – Engaging With Music 2023 – Full Report</a></li>
+            <li><a href="https://www.radiofrance.fr/francemusique/podcasts/au-fil-de-l-actu/quelles-sont-les-habitudes-musicales-des-francais-5026777" target="_blank">Radio France – Habitudes musicales des Français</a></li>
+            <li><a href="https://www.laveniradubon.fr/culture-loisirs/la-bonne-donnee--pour-76--des-francais-la-musique-occupe-une-place-importante-dans-leur-vie" target="_blank">L'Avenir du Bon – La musique dans la vie des Français</a></li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <strong>Étude de Marché - Les Français et la Musique | Wild Code School | Data Analytics Project</strong><br>
+        <em>Réalisé par Gaëlle, Pauline, Bertrand & Hassan | Document généré le 30/05/2025</em>
+    </div>
+
+    <script>
+        function downloadHTML() {
+            // Créer une copie du contenu HTML
+            const htmlContent = document.documentElement.outerHTML;
+            
+            // Créer un blob avec le contenu HTML
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            
+            // Créer un lien de téléchargement
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'etude-marche-musique-francais.html';
+            
+            // Déclencher le téléchargement
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Nettoyer l'URL
+            URL.revokeObjectURL(link.href);
+        }
+    </script>
+</body>
+</html>
