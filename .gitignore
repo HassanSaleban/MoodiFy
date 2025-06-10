@@ -1,0 +1,81 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # Environnements virtuels Python\
+env_Moodify/\
+venv/\
+env/\
+ENV/\
+.venv/\
+\
+# Fichiers Python\
+__pycache__/\
+*.py[cod]\
+*$py.class\
+*.so\
+.Python\
+build/\
+develop-eggs/\
+dist/\
+downloads/\
+eggs/\
+.eggs/\
+lib/\
+lib64/\
+parts/\
+sdist/\
+var/\
+wheels/\
+*.egg-info/\
+.installed.cfg\
+*.egg\
+\
+# Fichiers syst\'e8me macOS (priorit\'e9)\
+.DS_Store\
+.DS_Store?\
+._*\
+.Spotlight-V100\
+.Trashes\
+.AppleDouble\
+.LSOverride\
+.DocumentRevisions-V100\
+.fseventsd\
+.TemporaryItems\
+.VolumeIcon.icns\
+.com.apple.timemachine.donotpresent\
+\
+# \'c9diteurs et IDE\
+.vscode/\
+.idea/\
+*.swp\
+*.swo\
+*~\
+.sublime-project\
+.sublime-workspace\
+\
+# Logs et fichiers temporaires\
+*.log\
+*.tmp\
+*.temp\
+logs/\
+temp/\
+\
+# Configuration locale\
+.env\
+.env.local\
+config.json\
+secrets.json\
+\
+# Jupyter Notebook\
+.ipynb_checkpoints\
+\
+# Cache et donn\'e9es\
+.cache/\
+.pytest_cache/\
+.coverage\
+htmlcov/\
+}
