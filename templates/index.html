@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Moodify - App Complète</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+  <div class="flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 p-6 flex flex-col gap-6 shadow-lg">
+      <h1 class="text-2xl font-bold mb-6 text-purple-400">🎧 Moodify</h1>
+
+      <div>
+        <label class="block mb-1 text-sm font-medium">🔁 Recommande</label>
+        <input id="songInput" class="w-full p-2 rounded text-black" placeholder="Nom chanson" />
+        <button onclick="getRecommendations()" class="w-full mt-2 bg-indigo-500 hover:bg-indigo-600 p-2 rounded">Go</button>
+      </div>
+
+      <div>
+        <label class="block mb-1 text-sm font-medium">😊 Humeur</label>
+        <select id="moodSelect" class="w-full p-2 rounded text-black">
+          <option value="joyeux">Joyeux</option>
+          <option value="triste">Triste</option>
+          <option value="énergique">Énergique</option>
+          <option value="calme">Calme</option>
+        </select>
+        <button onclick="getMoodPlaylist()" class="w-full mt-2 bg-green-500 hover:bg-green-600 p-2 rounded">Go</button>
+      </div>
+
+      <div>
+        <label class="block mb-1 text-sm font-medium">🏃 Activité</label>
+        <select id="activitySelect" class="w-full p-2 rounded text-black">
+          <option value="sport">Sport</option>
+          <option value="relaxation">Relaxation</option>
+          <option value="travail">Travail</option>
+          <option value="conduite">Conduite</option>
+        </select>
+        <button onclick="getActivityPlaylist()" class="w-full mt-2 bg-yellow-400 hover:bg-yellow-500 text-black p-2 rounded">Go</button>
+      </div>
+
+      <div>
+        <label class="block mb-1 text-sm font-medium">🎤 Paroles</label>
+        <input id="artistInput" class="w-full mb-1 p-2 rounded text-black" placeholder="Artiste">
+        <input id="titleInput" class="w-full mb-2 p-2 rounded text-black" placeholder="Titre chanson">
+        <button onclick="getLyrics()" class="w-full bg-red-500 hover:bg-red-600 p-2 rounded">Go</button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 p-6 overflow-auto">
+      <h2 class="text-3xl font-bold mb-6 text-purple-300">Résultats</h2>
+      <div id="output" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </main>
+
+  </div>
+
+  <script>
+    async function postData(url, data) {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      return res.json();
+    }
+
+    function renderCard(title, subtitle) {
+      return `<div class='bg-gray-800 p-4 rounded shadow'>
+                <h3 class='text-lg font-semibold'>${title}</h3>
+                <p class='text-sm text-gray-400'>${subtitle}</p>
+              </div>`;
+    }
+
+    function displayResults(data, formatter = renderCard) {
+      const container = document.getElementById('output');
+      container.innerHTML = '';
+      if (!data || (Array.isArray(data) && data.length === 0)) {
+        container.innerHTML = "<p class='text-gray-400'>Aucun résultat trouvé.</p>";
+        return;
+      }
+      if (typeof data === 'string') {
+        container.innerHTML = `<div class='text-sm text-gray-300 whitespace-pre-wrap'>${data}</div>`;
+        return;
+      }
+      data.forEach(item => {
+        container.innerHTML += formatter(item.track_name || '', item.artist_name || '');
+      });
+    }
+
+    function getRecommendations() {
+      const song = document.getElementById('songInput').value;
+      postData('/recommend', { song }).then(displayResults);
+    }
+
+    function getMoodPlaylist() {
+      const mood = document.getElementById('moodSelect').value;
+      postData('/mood', { mood }).then(displayResults);
+    }
+
+    function getActivityPlaylist() {
+      const activity = document.getElementById('activitySelect').value;
+      postData('/activity', { activity }).then(displayResults);
+    }
+
+    function getLyrics() {
+      const artist = document.getElementById('artistInput').value;
+      const title = document.getElementById('titleInput').value;
+      postData('/lyrics', { artist, title }).then(res => {
+        displayResults(res.lyrics.split('\n'), (line) => renderCard('🎶', line));
+      });
+    }
+  </script>
+
+</body>
+</html>
