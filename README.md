@@ -1,5 +1,6 @@
 # MoodiFy
 
+https://wildcodeschool.github.io/data-training-resources/projet/projet2_music/#introduction
 
 ## Objectif & Enjeux
 Vous êtes un AI Engineer junior freelance. Une start-up française spécialisée dans les applications musicales vous contacte. Elle souhaite lancer une nouvelle application qui se démarque de la concurrence par ses recommandations musicales innovantes.
