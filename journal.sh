@@ -39,7 +39,10 @@ git add df.ipynb
 
 # commente et sauvegarde la modif
 git commit -m "ajout notebook première lecture du df"
-# envoie au distant
+# envoie au distant pour la première fois
 git push -u origin branche-de-Pauline
+
+# envoie au distant
+git push
 
 
