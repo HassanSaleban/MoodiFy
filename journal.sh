@@ -42,6 +42,4 @@ git commit -m "ajout notebook première lecture du df"
 # envoie au distant
 git push -u origin branche-de-Pauline
 
-# initialise le fichier cache git : git init
-
 
