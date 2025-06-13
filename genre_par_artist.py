@@ -1,9 +1,10 @@
 import pandas as pd
 import spotipy
 import time
+import json
+import os
 from spotipy.oauth2 import SpotifyClientCredentials
 from dotenv import load_dotenv
-import os
 from tqdm import tqdm
 
 # === 1. Authentification Spotify ===
@@ -13,32 +14,56 @@ client_secret = os.getenv('SPOTIFY_CLIENT_SECRET')
 auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
 sp = spotipy.Spotify(auth_manager=auth_manager)
 
-# === 2. Charger les données et trier par popularité ===
-df = pd.read_csv("artists_genre.csv")  # ou "top_100.csv" si on veut faire le test sur l'échantillon
+# === 2. Charger les artistes ===
+df = pd.read_csv("artists_unique.csv")  # ou top_100.csv pour test
+artists = df['artist_name'].dropna().unique()
 
-# 1. Extraire la liste d'artistes
-artists = df['artist_name']
+# === 3. Charger cache si existant ===
+CACHE_FILE = "artist_genres_cache.json"
+if os.path.exists(CACHE_FILE):
+    with open(CACHE_FILE, "r") as f:
+        artist_genres = json.load(f)
+else:
+    artist_genres = {}
 
-artist_genres = {}
-
-# 2. Pour chaque artiste, chercher son artist_id via recherche et récupérer les genres
+# === 4. Traitement des artistes ===
 for artist_name in tqdm(artists, desc="Récupération genres artistes"):
+    if artist_name in artist_genres:
+        continue  # Déjà traité
+
     try:
         results = sp.search(q=f'artist:{artist_name}', type='artist', limit=1)
         items = results['artists']['items']
         if items:
-            artist_id = items[0]['id']
             genres = items[0]['genres']
             artist_genres[artist_name] = genres
         else:
             artist_genres[artist_name] = []
-        time.sleep(0.1)
+
+    except spotipy.exceptions.SpotifyException as e:
+        if e.http_status == 429:
+            retry_after = int(e.headers.get("Retry-After", 10))
+            print(f"[Rate Limit] Attente de {retry_after} sec pour {artist_name}")
+            time.sleep(retry_after)
+            continue
+        else:
+            print(f"[Erreur Spotify] {artist_name}: {e}")
+            artist_genres[artist_name] = []
+
     except Exception as e:
-        print(f"Erreur artiste {artist_name}: {e}")
+        print(f"[Erreur générale] {artist_name}: {e}")
         artist_genres[artist_name] = []
 
-# 3. Ajouter une colonne genres dans le DataFrame à partir du mapping
+    # Sauvegarde du cache à chaque itération
+    with open(CACHE_FILE, "w") as f:
+        json.dump(artist_genres, f)
+
+    time.sleep(0.1)  # Petite pause pour éviter surcharge
+
+# === 5. Ajout des genres au DataFrame final ===
 df['genres'] = df['artist_name'].map(artist_genres)
 
-df.to_csv("artists_with_genres.csv", index=False) # ou top100_with_genres.csv si on veut l'échantillon
-print("Export terminé.")
+# === 6. Export CSV final ===
+df.to_csv("artists_with_genres.csv", index=False)
+print("Export terminé dans 'artists_with_genres.csv'")
+
