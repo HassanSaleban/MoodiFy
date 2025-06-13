@@ -49,8 +49,7 @@ df= df.loc[df.groupby(['track_name', 'artist_name'])['popularity'].idxmax()]
 
 # Extraire uniquement le numérateur de la signature [2, 3, 4, 5] pour en faire une colonne numérique propre.
 # Étape 1 : Extraire la partie avant le '/' et la convertir en entier
-df['time_signature_clean'] = df['time_signature'].str.extract(r'^(\d+)').astype('Int64')
-df['time_signature'] = df['time_signature_clean']
+df['time_signature'] = df['time_signature'].str.extract(r'^(\d+)').astype('Int64')
 df = df[df['time_signature'].isin([1, 3, 4, 5])]
 
 # Pour chaque titre de chanson unique (track_name) sélectionne la ligne ayant la popularité maximale (popularity) dans le DataFrame df
