@@ -53,6 +53,31 @@ Seuils critiques : Q1=0.24 (musique triste), Q3=0.66 (musique joyeuse). Permet u
 
 La recherche de corrélation entre différentes variables permettra d'obtenir une classification plus précise : loudness/energy, acousticness/tempo, danceability/tempo, energy/danceability, energy/tempo, mode/valence. 
 
+Analyse exploratoire des données
+L’analyse des caractéristiques audio révèle des patterns intéressants. Les données montrent des corrélations significatives entre différentes dimensions :
+	•	Valence et Energy : corrélation de 0.72, indiquant que les morceaux joyeux tendent à être énergiques
+	•	Energy et Tempo : corrélation très forte de 0.95, confirmant le lien entre rythme et énergie
+	•	Valence et Tempo : corrélation de 0.87, suggérant que les tempos rapides sont associés à des émotions positives
+Les statistiques descriptives montrent :
+	•	Valence : moyenne de 0.5 (écart-type 0.26), distribution équilibrée entre émotions positives et négatives
+	•	Energy : moyenne de 0.57 (écart-type 0.22), légèrement orientée vers les morceaux énergiques
+	•	Tempo : moyenne de 125.8 BPM (écart-type 13.9), centré sur les tempos modérés
+
+
+Humeurs émotionnelles :
+	•	Joie/Bonheur : valence élevée, energy élevée
+	•	Tristesse/Mélancolie : valence faible, energy faible
+	•	Calme/Sérénité : valence modérée-élevée, energy faible
+	•	Excitation/Énergie : valence élevée, energy très élevée
+	•	Colère/Frustration : valence faible, energy élevée
+Activités contextuelles :
+	•	Sport/Entraînement : energy très élevée, tempo rapide
+	•	Travail/Concentration : energy modérée, instrumentalness élevée
+	•	Détente/Relaxation : energy faible, acousticness élevée
+	•	Fête/Social : danceability élevée, valence élevée
+	•	Étude : speechiness faible, energy modérée
+
+
 3. Quels genres musicaux sont généralement associés à certaines activités?
 
 Pistes : 
